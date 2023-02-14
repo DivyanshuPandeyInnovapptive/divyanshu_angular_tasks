@@ -72,4 +72,18 @@
 <app-forms></app-forms>
 <div>Todays Date is: {{ today }}</div>
 <div>{{ books | json }}</div>
+
+<div class="container">
+  <h2>Course Details</h2>
+  <p>Select a course to view</p>
+  <select [(ngModel)]="selectedCourseValue">
+    <option *ngFor="let courseitem of courseitems" [value]="courseitem.id">
+      {{ courseitem.name }}
+    </option>
+  </select>
+  <app-courselist
+    [courseitem]="courseitems[selectedCourseValue - 1]"
+  ></app-courselist>
+</div>
+
 <router-outlet></router-outlet>

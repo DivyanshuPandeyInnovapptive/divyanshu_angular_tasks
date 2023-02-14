@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SqrPipe } from './pipes/sqr.pipe';
 import { SalutationPipe } from './pipes/salutation.pipe';
 import { DateserviceService } from './services/dateservice.service';
+import { CourselistComponent } from './componenets/courselist/courselist.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DateserviceService } from './services/dateservice.service';
     ChangeTextDirective,
     FormsComponent,
     SqrPipe,
-    SalutationPipe
+    SalutationPipe,
+    CourselistComponent
   ],
   imports: [
     BrowserModule,

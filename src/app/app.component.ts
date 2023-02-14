@@ -53,8 +53,10 @@ export class AppComponent {
     { orderId: 2004, productName: "Motorolla Edge+", quantity: 1, billAmount: 980, transaction:'Pending' }
   ];
 
-  items: any[] = [{name: 'One', val: 1}, {name: 'Two', val: 2}, {name: 'Three', val: 3}, {name: 'Four', val: 4}, {name: 'Five', val: 5}, {name: 'Six', val: 6}];  
-  selectedValue: string= 'One'; 
+  items: any[] = [{name: 'One', val: 1}, {name: 'Two', val: 2}, {name: 'Three', val: 3}, {name: 'Four', val: 4}, {name: 'Five', val: 5}, {name: 'Six', val: 6}]; 
+  selectedValue: string= 'One';
+  courseitems: any[] = [{name: 'Node Js', id: 1}, {name: 'Typescript', id: 2}, {name: 'Angular', id: 3}, {name: 'React Js', id: 4}]; 
+  selectedCourseValue: number = 1; 
 
   buttonBackground: string;
   buttonColor: string;
