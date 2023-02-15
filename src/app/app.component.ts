@@ -1,28 +1,64 @@
 import { Component } from '@angular/core';
 import { DateserviceService } from './services/dateservice.service';
+import {Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { filter, reduce } from 'rxjs';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 
+@Injectable()
 export class AppComponent {
+  API_KEY = "e40d07f00b094602953cc3bf8537477e";
   score:number = 0.5;
   today:string = '';
   books: any[];
   myInputMsg: string = 'I am Parent Component';
   msgFromCHild: string;
+  outputdata: string = '';
 
   getDataFromChild(data: any) {
     console.log('Data: ', data);
     this.msgFromCHild = data;
   }
 
-  constructor(private dateService:DateserviceService){}
+  constructor(private dateService:DateserviceService, private httpClient: HttpClient){}
 
   ngOnInit(){
     this.today=this.dateService.getTodayDate();
     this.books=this.dateService.getBooks();
+
+    this.fetchDataAsPromise()
+    .then((data) => {
+      console.log(JSON.stringify(data));
+      this.outputdata=JSON.stringify(data);
+    })
+    .catch((error) => {
+      console.log("Promise rejected with " + JSON.stringify(error));
+    });
+
+    const sqnc = new Observable(countOnetoTen).pipe(filter(x => Number(x) % 2 == 0));
+    sqnc.subscribe({
+      next(num) { console.log(num); }
+    });
+
+    function countOnetoTen(observer: any) {
+      for(let i = 1; i <= 10; i++) 
+        observer.next(i);
+      }
+      return {unsubscribe(){}}
+    }
+
+  fetchDataAsPromise() {
+    return this.httpClient
+    .get(
+      `https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`
+    ) 
+    .toPromise();
   }
 
   product: Object = {

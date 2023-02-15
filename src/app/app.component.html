@@ -1,3 +1,12 @@
+<nav>
+  <a class="form-control btn btn-primary w-25" routerLink="/home">Home</a>
+  <a class="form-control btn btn-primary w-25" routerLink="/signup">Sign Up</a>
+  <a class="form-control btn btn-primary w-25" routerLink="/about">About Us</a>
+  <a class="form-control btn btn-primary w-25" routerLink="/contact"
+    >Contact Us</a
+  >
+</nav>
+<router-outlet></router-outlet>
 <h1>{{ login_title }}</h1>
 {{ msgFromCHild }}
 <div class="main">
@@ -86,4 +95,4 @@
   ></app-courselist>
 </div>
 
-<router-outlet></router-outlet>
+{{ outputdata }}
